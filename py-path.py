@@ -1,7 +1,7 @@
 """
 	project............: efind-py-path
 	description........: efind extension to filter files by extension and
-                             mime type.
+                             mime-type.
 	date...............: 06/2017
 	copyright..........: Sebastian Fedrau
 
@@ -29,7 +29,7 @@ from mimetypes import MimeTypes
 
 EXTENSION_NAME="py-path"
 EXTENSION_VERSION="0.1.0"
-EXTENSION_DESCRIPTION="Filter files by extension and mime type."
+EXTENSION_DESCRIPTION="Filter files by extension and mime-type."
 
 MIME_TYPES=MimeTypes()
 
@@ -38,7 +38,7 @@ def get_ext(filename):
 
     return ext
 
-def ext_equals(filename, extension):
+def extension_equals(filename, extension):
     ext = get_ext(filename)
 
     if len(ext) > 0:
@@ -46,9 +46,9 @@ def ext_equals(filename, extension):
 
     return 0
 
-ext_equals.__signature__=[str]
+extension_equals.__signature__=[str]
 
-def ext_equals_icase(filename, extension):
+def extension_equals_icase(filename, extension):
     ext = get_ext(filename)
 
     if len(ext) > 0:
@@ -56,23 +56,23 @@ def ext_equals_icase(filename, extension):
 
     return 0
 
-ext_equals_icase.__signature__=[str]
+extension_equals_icase.__signature__=[str]
 
-def ext_in(filename, extensions):
+def extension_in(filename, extensions):
     ext = get_ext(filename)
     l = extensions.split(',')
 
     return ext in map(str.strip, l)
 
-ext_in.__signature__=[str]
+extension_in.__signature__=[str]
 
-def ext_in_icase(filename, extensions):
+def extension_in_icase(filename, extensions):
     ext = get_ext(filename)
     l = extensions.split(',')
 
     return ext.lower() in map(lambda s: s.strip().lower(), l)
 
-ext_in_icase.__signature__=[str]
+extension_in_icase.__signature__=[str]
 
 def mime_equals(filename, mime):
     global MIME_TYPES
@@ -86,4 +86,4 @@ def mime_equals(filename, mime):
 
 mime_equals.__signature__=[str]
 
-EXTENSION_EXPORT=[ext_equals, ext_equals_icase, ext_in, ext_in_icase, mime_equals]
+EXTENSION_EXPORT=[extension_equals, extension_equals_icase, extension_in, extension_in_icase, mime_equals]
