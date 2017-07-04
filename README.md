@@ -42,4 +42,4 @@ Tests if the mime-type of the found file is equal to *mime-type*.
 
 ## Installation
 
-Copy the Python script to *~/.efind/extensions*.
+Copy the Python script to *~/.efind/extensions* or run the *install.sh* shell script.
