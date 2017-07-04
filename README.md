@@ -32,7 +32,7 @@ of the found file.
 Tests if the comma-separated list *extensions* contains the file extension
 of the found file. The string comparison is case-insensitive.
 
-	$ efind . 'extension_in(".cpp, .Hpp")'
+	$ efind . 'extension_in_icase(".cpp, .Hpp")'
 
 ### mime\_equals(string: mime-type)
 
