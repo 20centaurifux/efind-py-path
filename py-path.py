@@ -28,7 +28,7 @@ import os
 from mimetypes import MimeTypes
 
 EXTENSION_NAME="py-path"
-EXTENSION_VERSION="0.1.0"
+EXTENSION_VERSION="0.2.0"
 EXTENSION_DESCRIPTION="Filter files by extension and mime-type."
 
 MIME_TYPES=MimeTypes()
@@ -38,7 +38,7 @@ def get_ext(filename):
 
     return ext
 
-def extension_equals(filename, extension):
+def extension_equals(filename: str, extension: str):
     ext = get_ext(filename)
 
     if len(ext) > 0:
@@ -46,9 +46,7 @@ def extension_equals(filename, extension):
 
     return 0
 
-extension_equals.__signature__=[str]
-
-def extension_equals_icase(filename, extension):
+def extension_equals_icase(filename: str, extension: str):
     ext = get_ext(filename)
 
     if len(ext) > 0:
@@ -56,25 +54,19 @@ def extension_equals_icase(filename, extension):
 
     return 0
 
-extension_equals_icase.__signature__=[str]
-
-def extension_in(filename, extensions):
+def extension_in(filename: str, extensions: str):
     ext = get_ext(filename)
     l = extensions.split(',')
 
     return ext in map(str.strip, l)
 
-extension_in.__signature__=[str]
-
-def extension_in_icase(filename, extensions):
+def extension_in_icase(filename: str, extensions: str):
     ext = get_ext(filename)
     l = extensions.split(',')
 
     return ext.lower() in map(lambda s: s.strip().lower(), l)
 
-extension_in_icase.__signature__=[str]
-
-def mime_equals(filename, mime):
+def mime_equals(filename: str, mime: str):
     global MIME_TYPES
 
     mime_type = MIME_TYPES.guess_type(filename)
@@ -83,7 +75,5 @@ def mime_equals(filename, mime):
         return mime == mime_type[0]
 
     return 0
-
-mime_equals.__signature__=[str]
 
 EXTENSION_EXPORT=[extension_equals, extension_equals_icase, extension_in, extension_in_icase, mime_equals]
